@@ -14,7 +14,8 @@ template_cols = {
     "products_word_bank": (
         ["category_id", "category_name", "sub_category"] +
         [f"keyword_{i}" for i in range(1, 126)]
-    )
+    ),
+    "dropbox_links": ["group_name", "dropbox_url", "inserted_at"]
 }
 
 # -------------------------------------
@@ -108,6 +109,15 @@ def overwrite_table(table_name, df):
                 values = [str(row[col]) if pd.notna(row[col]) else None for col in expected_columns]
                 values[0] = int(row["category_id"]) if pd.notna(row["category_id"]) else None  # Ensure int
                 cursor.execute(sql, values)
+
+            elif table_name == "dropbox_links":
+                cursor.execute("""
+                    INSERT INTO dropbox_links (group_name, dropbox_url, inserted_at)
+                    VALUES (?, ?, ?)
+                """,
+                str(row.get("group_name")) if pd.notna(row.get("group_name")) else None,
+                str(row.get("dropbox_url")) if pd.notna(row.get("dropbox_url")) else None,
+                pd.to_datetime(row.get("inserted_at")) if pd.notna(row.get("inserted_at")) else None)
 
         except Exception as e:
             st.error(f"❌ Failed to insert row {idx + 1}: {row.to_dict()}\n\nError: {e}")

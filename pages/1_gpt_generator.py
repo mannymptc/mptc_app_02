@@ -123,7 +123,7 @@ if uploaded_file:
                     output_rows.append({
                         "SKU": row["SKU"], "Name": row["Name"], "Includes": row.get("Includes", ""),
                         "Title 1": "", "Title 2": "", "Title 3": "", "Title 4": "",
-                        "Description": "", "Status": "❌ Skipped (No Image)"
+                        "Description": "", "Status": "Skipped (No Image)"
                     })
                 continue
 
