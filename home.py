@@ -17,19 +17,22 @@ This powerful assistant helps you manage and automate your e-commerce product li
 # -------------------------------------
 st.markdown("## 📂 Navigate to a Module")
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
-    st.page_link("pages/1_gpt_generator.py", label="1) Title & Description Generator", icon="🛍️")
+    st.page_link("pages/1_gpt_generator.py", label="2) GPT Generator", icon="🛍️")
 
 with col2:
-    st.page_link("pages/2_channel_specific.py", label="3) Channel Specific Generator", icon="✍🏻")
+    st.page_link("pages/2_channel_templates.py", label="2) Channel Templates", icon="✍🏻")
 
 with col3:
-    st.page_link("pages/3_database_access.py", label="2) Database Access & Editor", icon="🗃️")
+    st.page_link("pages/3_database_access.py", label="2) Database Access", icon="🗃️")
 
 with col4:
-    st.page_link("pages/4_barcode_generator.py", label="3) Barcode Generator", icon="📦")
+    st.page_link("pages/4_dropbox_uploader.py", label="2) Dropbox Uploader", icon="📤")
+
+with col5:
+    st.page_link("pages/5_barcode_generator.py", label="2) Barcode Generator", icon="📦")
 
 # -------------------------------------
 st.markdown("---")
